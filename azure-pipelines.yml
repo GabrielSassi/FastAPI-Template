@@ -9,20 +9,20 @@ pool:
   vmImage: "ubuntu-latest"
 
 steps:
-  - task: UsePythonVersion@0
-    inputs:
-      versionSpec: "3.11"
+- task: UsePythonVersion@0
+  inputs:
+    versionSpec: "3.11"
 
-  - script: |
-      python -m pip install --upgrade pip
-      pip install poetry
-      poetry install
-    displayName: "Install dependencies"
+- script: |
+    python -m pip install --upgrade pip
+    pip install poetry
+    poetry install
+  displayName: "Install dependencies"
 
-  - script: |
-      poetry run ruff check .
-    displayName: "Lint (ruff)"
+- script: |
+    poetry run ruff check .
+  displayName: "Lint (ruff)"
 
-  - script: |
-      poetry run pytest -q
-    displayName: "Run tests"
+- script: |
+    poetry run pytest -q
+  displayName: "Run tests"
